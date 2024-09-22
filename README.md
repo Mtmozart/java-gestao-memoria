@@ -136,4 +136,87 @@ versões posteriores.
 Você aprendeu que o G1 divide a memória em diferentes áreas: Eden Space, Survivor Space e Old Generation.
 
 Cada objeto criado é inicialmente alocado no Eden Space. Se ele sobreviver a algumas coletas de lixo, ele é movido para
-o Survivor Space. E se ele continuar sendo usado por muito tempo, ele vai para a Old Generation. 
+o Survivor Space. E se ele continuar sendo usado por muito tempo, ele vai para a Old Generation.
+
+# Class loader
+
+O Class Loader é como um "faxineiro" que organiza as suas classes Java dentro da memória da JVM. Ele é responsável por
+pegar os arquivos .class (que são as versões compiladas do seu código Java) e carregá-los para a JVM, para que ela possa
+executá-los.
+
+Imagine que você está organizando uma festa. Você precisa de vários itens, como comida, bebida, música, etc. O Class
+Loader seria como o seu amigo que vai buscar tudo o que você precisa em diferentes lugares e te entrega tudo organizado
+na sua festa.
+
+Ele busca os arquivos .class em diferentes locais, como o seu projeto, as bibliotecas que você usa e até mesmo o sistema
+operacional. Depois de carregá-los, ele os organiza na memória da JVM, para que a JVM possa acessá-los e executar o seu
+código.
+
+O Class Loader é fundamental para o funcionamento do Java, pois ele garante que as classes sejam carregadas de forma
+eficiente e segura. Ele também é responsável por garantir que cada classe seja carregada apenas uma vez, evitando
+problemas de conflito entre diferentes versões da mesma classe.
+
+Hierarquia de class loader : três camadas:
+1º bootstrap classloader: carrega de um diretório específico: JRE/lib/rt.jar --> bibliotecas padrão.
+2º Platform Classloader: carrega classes de JRE/lib/ext ou java.ext.dirs -> bibliotecas externas mas da plataforma java.
+3º Filho do platform => App classloader: classe do classPath -classpath, cp Manifest -> carrega todas as clsases
+externas como a que criamos ou do pom xml.
+
+Pc rEGISTER -> GUARDO O ENDEREÇO PARA FAZER A PRÓXIMA EXECUÇÃO
+
+Importação de coisas que deixo nativo para ter mais peformace.
+
+```java
+ public native static int soma(int valor1, int valor2) {
+    return valor1 + valor2;
+}
+```
+
+A aula de hoje foi sobre a Execution Engine, que é a parte da JVM responsável por executar o nosso código Java. Ela tem
+dois componentes principais: o Interpreter e o JIT Compiler.
+
+O Interpreter é como um tradutor que pega o nosso código Java (bytecode) e transforma em instruções que o computador
+entende (Assembly). Mas ele pode ser lento quando precisa traduzir as mesmas linhas de código várias vezes.
+
+Para resolver esse problema, temos o JIT Compiler, que entra em ação quando as linhas de código são executadas
+repetidamente. Ele compila essas linhas para código nativo, que é muito mais rápido, e assim, otimiza a execução do
+nosso código.
+
+Além disso, a aula explicou a Native Method Interface e as Java Native Libraries, que permitem que a JVM utilize código
+nativo escrito em outras linguagens, como C ou C++.
+
+No final, vimos que a JVM é um sistema complexo e dinâmico, com várias partes que trabalham juntas para executar o nosso
+código. Entender como cada parte funciona é essencial para solucionar problemas e otimizar o desempenho das nossas
+aplicações.
+
+Espero que essa breve explicação tenha te ajudado! Se tiver alguma dúvida, pode me perguntar!
+
+Que ideia legal! Vamos lá, vamos fazer uma seta para cada parte da JVM que vimos na aula:
+
+1. Class Loader:
+   ️ Runtime Data Areas
+
+2. Runtime Data Areas:
+   ️ Execution Engine
+   ️ Execution Engine
+
+3. Execution Engine:
+   ️ Native Method Interface
+   ️ Native Method Interface
+   ️ Operating System
+   ️ Operating System
+
+4. Native Method Interface:
+   ️ Java Native Libraries
+
+5. Java Native Libraries:
+   ️ Operating System
+
+6. Operating System:
+   ️ Runtime Data Areas
+
+Lembre-se que essas setas representam a fluidez da execução do código na JVM. O código pode ir e voltar entre essas
+áreas, dependendo do que está sendo executado.
+
+Espero que essa visualização te ajude a entender melhor como a JVM funciona! Se tiver mais alguma dúvida, pode me
+perguntar! 

@@ -220,3 +220,22 @@ Lembre-se que essas setas representam a fluidez da execução do código na JVM.
 
 Espero que essa visualização te ajude a entender melhor como a JVM funciona! Se tiver mais alguma dúvida, pode me
 perguntar! 
+# Graal vm
+Inicia o java instantaneamente.
+Configurado e baixo, no spring, devo passar o seguinte argumento para gerar a imagem:
+
+```
+<plugin>
+    <groupId>org.graalvm.buildtools</groupId>
+    <artifactId>native-maven-plugin</artifactId>
+</plugin>
+
+```
+
+Comando para iniciar a jvm: 
+```java
+mvn -Pnative native:compile -d skip tests
+
+```
+Entra na pasta targe e executa o seguinte comando:
+**.\api.exe**
